@@ -20,6 +20,11 @@
 			</list>
 		</property>
 	</bean>
+	
+	 <!-- 静态文件访问,主要是让DispatcherServlet不拦截以下静态资源 -->
+	<mvc:annotation-driven /> 
+	<mvc:resources location="/imgs/" mapping="/imgs/**"/> 
+	
 	<!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
@@ -49,14 +54,14 @@
 	</bean>
 
 	<!-- 配置拦截器 -->
-	<mvc:interceptors>
-		<!-- 多个拦截器，顺序执行 -->
-		<!-- 配置登陆拦截器 -->
+	<!-- <mvc:interceptors>
+		多个拦截器，顺序执行
+		配置登陆拦截器
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="priv.mcf.tl.intercepter.LoginHandlerIntercepter"></bean>
 		</mvc:interceptor>
-		<!-- ..... -->
-	</mvc:interceptors>
+		.....
+	</mvc:interceptors> -->
 
 </beans> 
